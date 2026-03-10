@@ -4,7 +4,7 @@ const wrongWayPoints = [
   { text: 'Doing your own books and losing time', sub: 'Spreadsheets and guesswork' },
   { text: 'Chasing your accountant for answers', sub: 'Delayed replies, missed deadlines' },
   { text: 'Juggling bookkeeper, CPA, and advisor', sub: 'Fragmented advice' },
-  { text: 'Reactive tax prep and last-minute surprises', sub: 'Higher bills, more stress' },
+  { text: 'Reactive tax prep & surprises', sub: 'Higher bills, more stress' },
 ];
 
 const appletreeWayPoints = [
