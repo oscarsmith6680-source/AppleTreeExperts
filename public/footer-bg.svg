@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <!-- Clean dot grid – even spacing, subtle and professional -->
+    <pattern id="grid" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="8" cy="8" r="0.6" fill="rgba(255,255,255,0.08)"/>
+    </pattern>
+  </defs>
+  <rect width="64" height="64" fill="url(#grid)"/>
+</svg>

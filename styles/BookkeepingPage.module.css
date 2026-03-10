@@ -1,0 +1,702 @@
+/* ========== 1. Hero ========== */
+.hero {
+  position: relative;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 5rem;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroImage {
+  object-fit: cover;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(15, 39, 68, 0.9) 0%, rgba(30, 58, 95, 0.78) 50%, rgba(44, 82, 130, 0.55) 100%);
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.heroBadge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+
+.heroTitle {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-white) !important;
+  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.heroSubtitle {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 580px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.55;
+}
+
+.heroCta {
+  display: inline-block;
+  background: var(--color-white);
+  color: var(--color-primary);
+  font-weight: 600;
+  padding: 0.8rem 1.75rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+}
+
+.heroCta:hover {
+  background: var(--color-gray-100);
+  color: var(--color-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.22);
+}
+
+@media (min-width: 768px) {
+  .heroTitle {
+    font-size: 3.5rem;
+  }
+  .heroSubtitle {
+    font-size: 1.25rem;
+  }
+}
+
+/* ========== 2. Monthly Bookkeeping & Accounting ========== */
+.monthly {
+  background: var(--color-white);
+}
+
+.monthlyWrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+  .monthlyWrap {
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+  }
+}
+
+.monthlyContent {
+  order: 2;
+}
+
+@media (min-width: 992px) {
+  .monthlyContent {
+    order: 1;
+  }
+}
+
+.monthlyBadge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+  background: rgba(30, 58, 95, 0.08);
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+
+.monthlyTitle {
+  font-family: var(--font-heading);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--color-primary-dark) !important;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .monthlyTitle {
+    font-size: 2.15rem;
+  }
+}
+
+.monthlyParagraph {
+  font-size: 1rem;
+  color: var(--color-gray-600);
+  margin: 0 0 1.25rem 0;
+  line-height: 1.7;
+}
+
+.monthlyImage {
+  order: 1;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(30, 58, 95, 0.12);
+  aspect-ratio: 4/3;
+}
+
+@media (min-width: 992px) {
+  .monthlyImage {
+    order: 2;
+  }
+}
+
+.monthlyImg {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.monthlyHighlight span:last-child {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-gray-800);
+}
+
+@media (max-width: 575.98px) {
+  .monthlyHighlights {
+    flex-direction: column;
+  }
+}
+
+/* ========== 3. Services include ========== */
+.include {
+  position: relative;
+  overflow: hidden;
+}
+
+.includeBg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(165deg, #f8fafc 0%, #eef2f7 50%, #f0f4f8 100%);
+  z-index: 0;
+}
+
+.includeHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.includeBadge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+  background: rgba(30, 58, 95, 0.08);
+  padding: 0.45rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+
+.includeTitle {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-primary-dark) !important;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .includeTitle {
+    font-size: 2.1rem;
+  }
+}
+
+.includeSubtitle {
+  font-size: 1.05rem;
+  color: var(--color-gray-500);
+  margin: 0;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.55;
+}
+
+.includeGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.includeCard {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: var(--color-white);
+  padding: 1.35rem 1.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(30, 58, 95, 0.08);
+  box-shadow: 0 4px 20px rgba(30, 58, 95, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.includeCard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.includeCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(30, 58, 95, 0.12);
+  border-color: rgba(30, 58, 95, 0.15);
+}
+
+.includeCard:hover::before {
+  opacity: 1;
+}
+
+.includeIconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.25s ease;
+}
+
+.includeIconWrap svg {
+  width: 22px;
+  height: 22px;
+}
+
+.includeIconWrap_teal { background: rgba(13, 148, 136, 0.12); color: #0d9488; }
+.includeCard:hover .includeIconWrap_teal { background: rgba(13, 148, 136, 0.2); }
+
+.includeIconWrap_blue { background: rgba(37, 99, 235, 0.12); color: #2563eb; }
+.includeCard:hover .includeIconWrap_blue { background: rgba(37, 99, 235, 0.2); }
+
+.includeIconWrap_amber { background: rgba(217, 119, 6, 0.12); color: #b45309; }
+.includeCard:hover .includeIconWrap_amber { background: rgba(217, 119, 6, 0.2); }
+
+.includeIconWrap_violet { background: rgba(124, 58, 237, 0.12); color: #7c3aed; }
+.includeCard:hover .includeIconWrap_violet { background: rgba(124, 58, 237, 0.2); }
+
+.includeCardTitle {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--color-gray-900);
+  line-height: 1.4;
+}
+
+@media (min-width: 576px) {
+  .includeGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .includeGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Shared section header (used by Team, etc.) */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-primary-dark) !important;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.25;
+}
+
+.sectionSubtitle {
+  font-size: 1.05rem;
+  color: var(--color-gray-500);
+  margin: 0;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* ========== 4. Your Team ========== */
+.team {
+  background: var(--color-white);
+}
+
+.teamCard {
+  background: var(--color-gray-100);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+  height: 100%;
+  border: 1px solid var(--color-gray-200);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.teamCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(30, 58, 95, 0.08);
+  border-color: rgba(30, 58, 95, 0.1);
+}
+
+.teamCardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-primary-dark) !important;
+  margin: 0 0 0.5rem 0;
+}
+
+.teamCardText {
+  font-size: 0.95rem;
+  color: var(--color-gray-600);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* ========== 5. Request a Free Quote ========== */
+.quote {
+  position: relative;
+  overflow: hidden;
+}
+
+.quoteBg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(165deg, #0a1628 0%, var(--color-primary-dark) 35%, var(--color-primary) 70%, #2c5282 100%);
+  z-index: 0;
+}
+
+.quoteShade {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(30, 58, 95, 0.4) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.quotePattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.04;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.4) 1px, transparent 0);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.quoteWrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 992px) {
+  .quoteWrap {
+    grid-template-columns: 1fr 1.1fr;
+    gap: 3.5rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+}
+
+.quoteContent {
+  color: var(--color-white);
+  padding: 0 0.25rem;
+}
+
+.quoteBadge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.12);
+  padding: 0.45rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.quoteTitle {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-white) !important;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+@media (min-width: 768px) {
+  .quoteTitle {
+    font-size: 2.35rem;
+  }
+}
+
+.quoteIntro {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0 0 1.75rem 0;
+  line-height: 1.65;
+  max-width: 420px;
+}
+
+.quoteBenefits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.quoteBenefit {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.98rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 500;
+}
+
+.quoteBenefitIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.quoteBenefitIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.quoteFormWrap {
+  min-width: 0;
+}
+
+.quoteCard {
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 2.25rem 1.75rem;
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.quoteCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+}
+
+.form {
+  padding: 0;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .formGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.35rem;
+  }
+  .formGroupFull {
+    grid-column: 1 / -1;
+  }
+}
+
+.formGroup,
+.formGroupFull {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-gray-700);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.9rem 1.15rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--color-gray-900);
+  background: var(--color-gray-100);
+  border: 1px solid var(--color-gray-200);
+  border-radius: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--color-gray-500);
+}
+
+.input:hover,
+.textarea:hover {
+  border-color: var(--color-gray-300);
+  background: var(--color-white);
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: var(--color-white);
+  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
+}
+
+.textarea {
+  min-height: 108px;
+  resize: vertical;
+}
+
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  color: var(--color-white);
+  border: none;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 8px 24px rgba(30, 58, 95, 0.28);
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  .submitBtn {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(30, 58, 95, 0.35);
+}
+
+.submitArrow {
+  transition: transform 0.25s ease;
+}
+
+.submitBtn:hover .submitArrow {
+  transform: translateX(4px);
+}
+
+.successMessage {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(13, 148, 136, 0.1);
+  color: #0d9488;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid rgba(13, 148, 136, 0.2);
+}
+
+.successMessage svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.errorMessage {
+  padding: 0.75rem 1rem;
+  background: rgba(220, 38, 38, 0.1);
+  color: #dc2626;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+@media (min-width: 768px) {
+  .quoteCard {
+    padding: 2.5rem 2.25rem;
+  }
+}

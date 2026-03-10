@@ -1,0 +1,184 @@
+/* ========== FAQ Section – clean, attractive accordion ========== */
+.section {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background: var(--color-gray-100);
+  z-index: 0;
+}
+
+.bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gray-200), transparent);
+  opacity: 0.8;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== Header ========== */
+.header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 2.75rem;
+  padding: 0 1rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2.25rem;
+  }
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: var(--color-gray-500);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ========== Accordion list ========== */
+.list {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.item {
+  background: var(--color-white);
+  border-radius: 14px;
+  border: 1px solid var(--color-gray-200);
+  box-shadow: 0 2px 12px rgba(30, 58, 95, 0.04);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.item:hover {
+  border-color: var(--color-gray-300);
+  box-shadow: 0 4px 20px rgba(30, 58, 95, 0.06);
+}
+
+.itemOpen {
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 28px rgba(30, 58, 95, 0.1);
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.35rem;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s ease;
+}
+
+.trigger:hover {
+  background: rgba(30, 58, 95, 0.02);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.question {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-gray-900);
+  line-height: 1.4;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .question {
+    font-size: 1.05rem;
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--color-gray-100);
+  color: var(--color-primary);
+  transition: transform 0.3s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.itemOpen .icon {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: rotate(180deg);
+}
+
+.icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.answerWrap {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+}
+
+.itemOpen .answerWrap {
+  max-height: 30rem;
+}
+
+.answer {
+  padding: 0 1.35rem 1.35rem;
+  font-size: 0.95rem;
+  color: var(--color-gray-700);
+  line-height: 1.7;
+  border-top: 1px solid var(--color-gray-100);
+  padding-top: 1rem;
+  margin-top: 0;
+}
+
+.itemOpen .answer {
+  border-top-color: rgba(30, 58, 95, 0.08);
+}
