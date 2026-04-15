@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { submitContactForm } from '@/lib/submitContactForm';
 import styles from '@/styles/ContactPage.module.css';
 
 const contactInfo = [
@@ -78,22 +79,10 @@ export default function ContactPage() {
     setSubmitStatus(null);
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fullName: formData.name.trim(),
-          email: formData.email.trim(),
-          phone: formData.phone.trim() || 'Not provided',
-          message: formData.message.trim(),
-        }),
-      });
-
-      const data = await res.json().catch(() => ({}));
-
-      if (!res.ok || !data.success) {
+      const result = await submitContactForm(formData);
+      if (!result.ok) {
         setSubmitStatus('error');
-        setApiError(data.error || 'Something went wrong. Please try again.');
+        setApiError(result.error);
         return;
       }
 

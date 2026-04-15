@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { submitContactForm } from '@/lib/submitContactForm';
 import styles from '@/styles/Contact.module.css';
 
 export default function Contact() {
@@ -10,7 +11,8 @@ export default function Contact() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or 'empty'
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'empty', or 'error'
+  const [apiError, setApiError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,27 +30,35 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Check for blank fields
+    setApiError('');
+
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setSubmitStatus('empty');
       return;
     }
 
     setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
+    setSubmitStatus(null);
+
+    try {
+      const result = await submitContactForm(formData);
+      if (!result.ok) {
+        setSubmitStatus('error');
+        setApiError(result.error);
+        return;
+      }
+
       setSubmitStatus('success');
-      setIsSubmitting(false);
       setFormData({ name: '', email: '', phone: '', message: '' });
-      
-      // Reset status after 5 seconds
       setTimeout(() => setSubmitStatus(null), 5000);
-    }, 1500);
+    } catch {
+      setSubmitStatus('error');
+      setApiError('Network error. Check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -73,6 +83,11 @@ export default function Contact() {
               {submitStatus === 'empty' && (
                 <div className={styles.errorMessage}>
                   <span>Please fill in all required fields before submitting.</span>
+                </div>
+              )}
+              {submitStatus === 'error' && apiError && (
+                <div className={styles.errorMessage}>
+                  <span>{apiError}</span>
                 </div>
               )}
               <div className="row g-3">
