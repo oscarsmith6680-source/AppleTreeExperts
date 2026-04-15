@@ -45,12 +45,12 @@ export default function ContactPage() {
     name: '',
     email: '',
     phone: '',
-    subject: '',
     message: '',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or 'empty'
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'empty', or 'error'
+  const [apiError, setApiError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,27 +65,47 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Check for blank fields
+    setApiError('');
+
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setSubmitStatus('empty');
       return;
     }
 
     setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
+    setSubmitStatus(null);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim() || 'Not provided',
+          message: formData.message.trim(),
+        }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data.success) {
+        setSubmitStatus('error');
+        setApiError(data.error || 'Something went wrong. Please try again.');
+        return;
+      }
+
       setSubmitStatus('success');
-      setIsSubmitting(false);
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-      
-      // Reset status after 5 seconds
+      setFormData({ name: '', email: '', phone: '', message: '' });
       setTimeout(() => setSubmitStatus(null), 5000);
-    }, 1500);
+    } catch {
+      setSubmitStatus('error');
+      setApiError('Network error. Check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -162,6 +182,11 @@ export default function ContactPage() {
                         <span>Please fill in all required fields before submitting.</span>
                       </div>
                     )}
+                    {submitStatus === 'error' && apiError && (
+                      <div className={styles.errorMessage}>
+                        <span>{apiError}</span>
+                      </div>
+                    )}
                     <div className="row g-3">
                       <div className="col-md-6">
                         <label htmlFor="contact-name" className={styles.label}>Name</label>
@@ -189,7 +214,7 @@ export default function ContactPage() {
                           required
                         />
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-12">
                         <label htmlFor="contact-phone" className={styles.label}>Phone</label>
                         <input
                           type="tel"
@@ -198,18 +223,6 @@ export default function ContactPage() {
                           value={formData.phone}
                           onChange={handleChange}
                           placeholder="(555) 000-0000"
-                          className={styles.input}
-                        />
-                      </div>
-                      <div className="col-md-6">
-                        <label htmlFor="contact-subject" className={styles.label}>Subject</label>
-                        <input
-                          type="text"
-                          id="contact-subject"
-                          name="subject"
-                          value={formData.subject}
-                          onChange={handleChange}
-                          placeholder="How can we help?"
                           className={styles.input}
                         />
                       </div>
